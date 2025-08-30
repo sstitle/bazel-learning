@@ -1,0 +1,11 @@
+cc_library(
+    name = "shapes",
+    srcs = ["src/shapes.cpp"],
+    hdrs = ["inc/shapes/shapes.hpp"],
+    includes = ["inc"],
+    deps = [
+        "//third_party:si",
+        "@spdlog//:spdlog",
+    ],
+    visibility = ["//visibility:public"],
+)

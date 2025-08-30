@@ -1,8 +1,20 @@
 """
-Module for spdlog
+Module for spdlog and SI units
 """
 
 bazel_dep(name = "spdlog", version = "1.15.1")
+
+# Rules Foreign CC for building CMake projects
+bazel_dep(name = "rules_foreign_cc", version = "0.10.1")
+
+# Fetch SI v2.5.3 via module extension (no vendoring)
+si = use_extension("//third_party:si_ext.bzl", "si_ext")
+si.fetch(
+    name = "si_source",
+    urls = ["https://github.com/bernedom/SI/archive/refs/tags/2.5.3.tar.gz"],
+    strip_prefix = "SI-2.5.3",
+)
+use_repo(si, "si_source")
 
 # Hedron's Compile Commands Extractor for Bazel
 # https://github.com/hedronvision/bazel-compile-commands-extractor
@@ -12,5 +24,5 @@ git_override(
     remote = "https://github.com/hedronvision/bazel-compile-commands-extractor.git",
     commit = "4f28899228fb3ad0126897876f147ca15026151e",
     # Replace the commit hash (above) with the latest (https://github.com/hedronvision/bazel-compile-commands-extractor/commits/main).
-    # Even better, set up Renovate and let it do the work for you (see "Suggestion: Updates" in the README).
+    # Even better, set up Renovate and let it do the work for you (see "Suggestion: Updates" in README).
 )

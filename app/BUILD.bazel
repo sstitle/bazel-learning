@@ -4,5 +4,6 @@ srcs = ["main.cpp"],
 deps = [
     "@spdlog//:spdlog",
     "//libs/foobar:foobar",
+    "//libs/shapes:shapes",
 ],
 )

@@ -1,0 +1,16 @@
+load("@rules_foreign_cc//foreign_cc:defs.bzl", "cmake")
+
+# SI library using cmake rule from rules_foreign_cc - NO VENDORING
+cmake(
+    name = "si",
+    lib_source = "@si_source//:all",
+    out_include_dir = "include",
+    out_headers_only = True,
+    cache_entries = {
+        "CMAKE_BUILD_TYPE": "Release",
+        "BUILD_SHARED_LIBS": "OFF",
+        "SI_BUILD_TESTS": "OFF",
+        "SI_BUILD_EXAMPLES": "OFF",
+    },
+    visibility = ["//visibility:public"],
+)
