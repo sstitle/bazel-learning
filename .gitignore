@@ -1,2 +1,5 @@
 bazel*
 compile_commands.json
+.ropeproject*
+.cache*
+external/
