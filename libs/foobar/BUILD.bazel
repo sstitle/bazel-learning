@@ -1,0 +1,10 @@
+cc_library(
+    name = "foobar",
+    srcs = ["src/foobar.cpp"],
+    hdrs = ["inc/foobar/foobar.hpp"],
+    includes = ["inc"],
+    deps = [
+        "@spdlog//:spdlog",
+    ],
+    visibility = ["//visibility:public"],
+)
